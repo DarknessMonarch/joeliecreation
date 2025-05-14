@@ -65,14 +65,20 @@ export default function SingleService({ params }) {
     if (selectedDate && currentService) {
       const fetchAvailability = async () => {
         try {
+          console.log(`Requesting availability for service ${currentService._id} on ${selectedDate.toISOString()}`);
+          
           const result = await checkAvailability(
             currentService._id, 
             selectedDate
           );
           
+          console.log("Availability result:", result);
+          
           if (result.success && result.data.available) {
+            console.log("Available time slots:", result.data.availableTimeSlots);
             setAvailableTimeSlots(result.data.availableTimeSlots);
           } else {
+            console.log("No available slots or availability check failed");
             setAvailableTimeSlots([]);
             toast.info("No available time slots for the selected date");
           }
@@ -81,7 +87,7 @@ export default function SingleService({ params }) {
           toast.error("Could not check availability");
         }
       };
-
+  
       fetchAvailability();
     }
   }, [selectedDate, currentService, checkAvailability]);

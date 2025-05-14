@@ -85,30 +85,31 @@ export const useServiceStore = create(
       checkAvailability: async (serviceId, date) => {
         try {
           set({ loading: true, error: null, availability: null });
-
+      
           const queryParams = new URLSearchParams({
             serviceId,
             date: date instanceof Date ? date.toISOString() : date,
+            nocache: Date.now()
           });
-
+      
           const response = await fetch(
             `${SERVER_API}/services/availability?${queryParams}`
           );
-
+      
           if (!response.ok) {
             const errorData = await response.json();
             throw new Error(
               errorData.error || `HTTP error! status: ${response.status}`
             );
           }
-
+      
           const data = await response.json();
-
+      
           if (data.success) {
             set({ availability: data });
             return { success: true, data };
           }
-
+      
           throw new Error(data.error || "Failed to check availability");
         } catch (error) {
           set({ error: error.message });
