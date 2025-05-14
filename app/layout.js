@@ -10,7 +10,7 @@ const urbanist = Urbanist({
 });
 
 
-const SITE_URL = "https://joeliescreation.swiftsyn.com";
+const SITE_URL = "https://joeliecreation.swiftsyn.com";
 const BANNER_URL = "https://raw.githubusercontent.com/DarknessMonarch/joeliecreation/refs/heads/master/public/assets/banner.png";
 
 export const viewport = { 
