@@ -1,0 +1,304 @@
+@media screen {
+  .homeContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+  }
+
+
+  .serviceContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .serviceTextSide {
+    flex: 1;
+    gap: 20px;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  .serviceButton {
+    gap: 15px;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: center;
+    color: var(--background-color);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background-color: transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .serviceButton:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .serviceButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .serviceButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.7s ease;
+  }
+
+  .serviceButton:hover::before {
+    left: 100%;
+  }
+
+  .serviceButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .serviceButton {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .serviceTextSide {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .serviceTextSide span {
+    border: 0.5px solid rgba(255, 255, 255, 0.3);
+    color: var(--background-color);
+    background: var(--linear-color);
+    text-transform: capitalize;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: .8rem;
+  }
+
+  .serviceTextContent {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .serviceDescription {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--background-color);
+    line-height: 1.2;
+
+  }
+
+  .serviceDetails{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .serviceTitle {
+    font-size: 2.1rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: 6px;
+    color: var(--background-color);
+    text-transform: uppercase;
+  }
+
+  .serviceCounter {
+    font-size: 1.4rem;
+    font-weight: 200;
+    color: var(--background-color);
+    opacity: 0.7;
+  }
+
+  .diagonalPattern {
+    position: relative;
+    z-index: 99;
+    height: 10%;
+    
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.1) 0,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+    opacity: 0.5;
+  }
+
+  .serviceImageSide {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+   
+  }
+  
+
+  .navigationArrows {
+    position: absolute;
+    bottom: 36px;
+    right: 36px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .navArrow {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: var(--background-color);
+    border: 1px solid var(--background-lighter-color);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  }
+
+  .navArrow:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes orbFloat {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-30px) translateX(20px);
+    }
+    100% {
+      transform: translateY(30px) translateX(-20px);
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-80px) translateX(60px) scale(0.5);
+      opacity: 0;
+    }
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .serviceContent {
+    flex-direction: row;
+  }
+
+  .serviceTextSide {
+    padding: 5% 10%;
+    max-width: 50%;
+    min-width: 50%;
+  }
+
+  .serviceCounter {
+    font-size: 1.4rem;
+  }
+
+  .serviceTextContent p {
+    font-size: 2rem;
+  }
+
+ 
+
+  .serviceTextContent {
+    gap: 40px;
+  }
+
+  .serviceTextSide {
+    gap: 20px;
+  }
+
+  .serviceDetails{
+    position: relative;
+    left: 200px;
+    z-index: 1;
+
+  }
+
+  .serviceDetails h1 {
+    font-size: 6rem;
+  }
+
+  .diagonalPattern {
+    left: 50px;
+    width: 10%;
+    height: 100%;
+    position: relative;
+  }
+
+  .serviceButton {
+    position: relative;
+    left: 350px;
+    z-index: 1;
+  }
+
+  .serviceImageSide {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 15%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 15%);
+  }
+
+}

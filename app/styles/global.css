@@ -1,0 +1,134 @@
+@media screen {
+  * {
+    --primary-color: #1a1825;
+    --primary-light-color: #5a6683;
+    --secondary-color: #ff3b3b;
+    --secondary-light-color: #fce3e3;
+    --tertiary-color: #651b6d;
+    --tertiary-light-color: #9e54a7;
+
+    --background-color: #ffffff;
+    --background-lighter-color: #ffffff4d;
+    --light-gray: #f5f7fa;
+    --medium-gray: #e1e5eb;
+    --dark-gray: #8494a4;
+
+    --success-color: #2ecc71;
+    --warning-color: #ff9800;
+    --error-color: #e74c3c;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
+    --transition: all 0.3s ease;
+    --linear-color: linear-gradient(
+      135deg,
+      #120f19ff,
+      #1a121f,
+      #261429,
+      #2d1630
+    );
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* ::-webkit-scrollbar {
+      display: none;
+    } */
+
+  body {
+    font-weight: 300;
+    color: var(--background-color);
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(-background-lighter-color);
+  }
+
+  a,
+  router-link {
+    text-decoration: none;
+  }
+
+  input {
+    outline: none;
+  }
+
+  button {
+    outline: none;
+    border: none;
+  }
+
+  input:focus,
+  input:hover {
+    outline: none;
+  }
+
+  textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 4px;
+    background: transparent;
+  }
+
+  textarea::placeholder {
+    color: var(--light-color);
+  }
+
+  textarea:focus,
+  textarea:hover {
+    outline: none;
+    border-color: none;
+  }
+
+  select {
+    outline: none;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--background-color) var(--tertiary-light-color);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--tertiary-color);
+  border-radius: 15px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--background-color);
+  border: 2px solid var(--tertiary-light-color);
+  border-radius: 15px;
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

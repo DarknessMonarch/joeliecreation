@@ -1,0 +1,313 @@
+@media screen {
+  .navLink {
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 80px;
+    z-index: 1000;
+    display: flex;
+    position: sticky; 
+    padding: 0 10px;
+    align-items: center;
+    background: var(--linear-color);
+    background-color: transparent;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+  }
+
+  .navLink h1 {
+    font-size: 1rem;
+    color: var(--background-color);
+  }
+
+  .logoContainer {
+    cursor: pointer;
+  }
+
+  .logoImg {
+    height: 50px;
+    width: auto;
+  }
+
+  .navLinkControls {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .scheduleButton {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-wrap: nowrap;
+    color: var(--background-color);
+    transition: all 0.3s ease;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    height: 40px;
+    padding: 10px;
+  }
+
+  .scheduleButton:hover {
+    background-color: var(--background-light-color);
+  }
+
+  .menuToggle {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: var(--background-color);
+    transition: transform 0.3s ease;
+  }
+
+  .menuToggle:hover {
+    transform: scale(1.1);
+  }
+
+  .navIcon {
+    font-size: 40px;
+    color: var(--background-color);
+  }
+
+  .navOverlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    opacity: 0.8;
+    position: fixed;
+    visibility: hidden;
+    background: var(--linear-color);
+    clip-path: circle(0% at 40px 40px);
+    transition: clip-path 0.5s ease-in-out, visibility 0s 0.5s;
+    
+  }
+
+  .navOverlay.open {
+    visibility: visible;
+    clip-path: circle(150% at 40px 40px);
+    transition: clip-path 0.5s ease-in-out, visibility 0s;
+  }
+
+  .navContent {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-delay: 0.3s;
+    transition: opacity 0.4s ease;
+  }
+
+  .navOverlay.open .navContent {
+    opacity: 1;
+  }
+
+  .navCardLink {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--primary-color);
+  }
+
+  .navItem {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .navItem::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+  }
+
+  .navItem:hover {
+    background-color: var(--tertiary-light-color);
+    transform: scale(1.02);
+  }
+
+  .navItem:hover::before {
+    opacity: 1;
+  }
+
+  .navItem {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    transition: color 0.3s ease;
+    color: var(--background-color);
+  }
+
+  .activeNavLink {
+    background-color: var(--tertiary-light-color);
+
+  }
+
+  .navScheduleIcon {
+    font-size: 30px;
+    color: var(--background-color);
+  }
+
+  .scheduleOverlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: 100%;
+    padding: 10px;
+    opacity: 0.98;
+    position: fixed;
+    visibility: hidden;
+    background: var(--linear-color);
+    clip-path: circle(0% at 40px 40px);
+
+
+  }
+
+  .scheduleOverlay.open {
+    visibility: visible;
+    clip-path: circle(150% at 40px 40px);
+    transition: clip-path 0.5s ease-in-out, visibility 0s;
+  }
+
+  .scheduleContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    transition-delay: 0.3s;
+
+  }
+
+  .scheduleOverlay.open .scheduleContent {
+    opacity: 1;
+  }
+
+  .schedulenavLink {
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .scheduleTitle {
+    color: var(--background-color);
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  .closeschedule {
+    background: transparent;
+    border: none;
+    color: var(--background-color);
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .closeschedule:hover {
+    transform: scale(1.1);
+  }
+
+  .scheduleContainer {
+    gap: 30px;
+    width: 100%;
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+  }
+
+  .scheduleActions {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  
+  .scheduleLink {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--background-color);
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    min-width: 220px;
+    transition: all 0.3s ease;
+  }
+
+  .scheduleLink:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .scheduleTitle {
+    color: var(--background-color);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .scheduleGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .scheduleItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .scheduleDay {
+    color: var(--background-color);
+    font-size: 1rem;
+  }
+
+  .scheduleHours {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .navLink {
+    padding: 0 40px;
+  }
+  .scheduleActions {
+    flex-wrap: nowrap;
+  }
+}
