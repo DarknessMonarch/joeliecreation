@@ -33,7 +33,7 @@ const navLinksData = [
 
 export default function NavBar() {
   const router = useRouter();
-  const { isOpen, toggleDrawer, closeDrawer } = useDrawerStore();
+  const { isOpen, toggleDrawer } = useDrawerStore();
   const [isMobile, setIsMobile] = useState(false);
   const [isscheduleOpen, setIsscheduleOpen] = useState(false);
   const pathname = usePathname();
@@ -41,6 +41,7 @@ export default function NavBar() {
   const navOverlayRef = useRef(null);
   const scheduleOverlayRef = useRef(null);
   const navItemsRef = useRef([]);
+  const menuButtonRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -80,23 +81,10 @@ export default function NavBar() {
     }
   }, [isOpen, isscheduleOpen]);
 
-  // Close drawer when route changes (especially important for mobile)
-  useEffect(() => {
-    if (isOpen) {
-      closeDrawer();
-    }
-  }, [pathname, closeDrawer, isOpen]);
-
   const toggleschedule = useCallback(() => {
     setIsscheduleOpen((prev) => !prev);
-    if (isOpen) closeDrawer();
-  }, [isOpen, closeDrawer]);
-
-  const handleNavLinkClick = useCallback(() => {
-    if (isMobile) {
-      closeDrawer();
-    }
-  }, [isMobile, closeDrawer]);
+    if (isOpen) toggleDrawer();
+  }, [isOpen, toggleDrawer]);
 
   const MakeAppointment = () => {
     toggleschedule();
@@ -104,13 +92,17 @@ export default function NavBar() {
     toast.success("Choose a service from the homepage to make an appointment");
   };
 
+  // Handle menu toggle with proper event handling for mobile
+  const handleMenuToggle = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleDrawer();
+  }, [toggleDrawer]);
+
   return (
     <>
       <div className={styles.navLink}>
-        <div className={styles.logoContainer} onClick={() => {
-          router.push("/page/home");
-          if (isOpen) closeDrawer();
-        }}>
+        <div className={styles.logoContainer} onClick={() => router.push("/page/home")}>
           <Image
             className={styles.logoImg}
             src={Logo}
@@ -129,8 +121,10 @@ export default function NavBar() {
             {isscheduleOpen ? "close schedule" : "show schedule"}
           </button>
           <button
+            ref={menuButtonRef}
             className={styles.menuToggle}
-            onClick={toggleDrawer}
+            onClick={handleMenuToggle}
+            onTouchEnd={handleMenuToggle}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? (
@@ -190,7 +184,7 @@ export default function NavBar() {
                     ? styles.activeNavLink
                     : ""
                 }`}
-                onClick={handleNavLinkClick}
+                onClick={toggleDrawer}
                 ref={(el) => {
                   if (el) navItemsRef.current[index] = el;
                 }}
