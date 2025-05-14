@@ -1,5 +1,5 @@
 export default async function sitemap() {
-  const baseUrl = 'https://joeliecreation.swiftsyn.com/';
+  const baseUrl = 'https://joeliescreation.swiftsyn.com/';
   
   const mainRoutes = [
  

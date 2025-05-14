@@ -15,9 +15,8 @@ export const useContactStore = create(
         try {
           set({ loading: true, error: null, submitSuccess: false });
           
-          // Validate required fields
-          const { name, email, subject, message } = formData;
-          if (!name || !email || !subject || !message) {
+          const { name, email, message } = formData;
+          if (!name || !email || !message) {
             throw new Error('Please provide all required fields');
           }
           
@@ -44,39 +43,6 @@ export const useContactStore = create(
           throw new Error(data.error || 'Failed to submit contact form');
         } catch (error) {
           set({ error: error.message });
-          return { success: false, message: error.message };
-        } finally {
-          set({ loading: false });
-        }
-      },
-
-      fetchContactInfo: async () => {
-        try {
-          set({ loading: true, error: null });
-          
-          const response = await fetch(`${SERVER_API}/contact/info`);
-          
-          if (response.status === 404) {
-            set({ contactInfo: null });
-            throw new Error('Contact information not found');
-          }
-          
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
-          }
-          
-          const data = await response.json();
-          
-          if (data.success && data.data) {
-            set({ contactInfo: data.data });
-            return { success: true, data: data.data };
-          } else {
-            set({ contactInfo: null });
-            throw new Error(data.error || 'Invalid data format received from server');
-          }
-        } catch (error) {
-          set({ error: error.message, contactInfo: null });
           return { success: false, message: error.message };
         } finally {
           set({ loading: false });

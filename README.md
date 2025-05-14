@@ -1,4 +1,4 @@
-# JolieCreation
+# JoliesCreation
 
 ```bash
 npm run dev

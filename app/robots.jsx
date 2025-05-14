@@ -29,7 +29,7 @@ export default function robots() {
         disallow: ['/'] // This disallows CCBot from crawling your site
       }
     ],
-    sitemap: 'https://joeliecreation.swiftsyn.com/sitemap.xml',
-    host: 'https://joeliecreation.swiftsyn.com'
+    sitemap: 'https://joeliescreation.swiftsyn.com/sitemap.xml',
+    host: 'https://joeliescreation.swiftsyn.com'
   }
 }

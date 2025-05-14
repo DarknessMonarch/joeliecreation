@@ -1,94 +1,74 @@
-
-
-.contactContainer {
-  height: 100%;
+.container {
   display: flex;
-  padding: 10px;
-  overflow-y: auto;
   align-items: center;
   justify-content: center;
+  padding: 2rem 1rem;
+  min-height: 100%;
 }
 
-.contactWrapper {
+.wrapper {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 600px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem;
+  transition: var(--transition);
 }
 
-.contactHeading {
-  font-size: 2.5rem;
+.heading {
+  font-size: 2rem;
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 2rem;
   text-align: center;
-  opacity: 0;
-  transform: translateY(-30px);
-  transition: var(--transition);
-}
-
-.accentText {
-  color: var(--tertiary-color);
   position: relative;
+  padding-bottom: 0.5rem;
 }
 
-.accentText::after {
+.heading::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
   height: 3px;
-  background-color: var(--secondary-color);
+  background: var(--linear-color);
+  border-radius: var(--border-radius-sm);
 }
 
-.contactContent {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputWrapper {
+  position: relative;
   transition: var(--transition);
 }
 
-@media (min-width: 768px) {
-  .contactContent {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.contactForm {
-  background-color: var(--background-color);
-  border-radius: var(--border-radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.inputGroup {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.inputIcon {
+.iconContainer {
   position: absolute;
   left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--dark-gray);
   transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.iconActive {
+.active {
   color: var(--tertiary-color);
 }
 
-.inputField {
+.input {
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  padding: 0.875rem 1rem 0.875rem 2.75rem;
   border: 1px solid var(--medium-gray);
   border-radius: var(--border-radius-md);
   font-size: 1rem;
@@ -97,22 +77,31 @@
   color: var(--primary-color);
 }
 
-.inputField:focus {
+.input:focus {
   outline: none;
   border-color: var(--tertiary-color);
-  box-shadow: 0 0 0 2px var(--tertiary-light-color);
   background-color: var(--background-color);
+  box-shadow: 0 0 0 3px var(--tertiary-light-color);
 }
 
-.textareaField {
+.input::placeholder {
+  color: var(--dark-gray);
+}
+
+.textarea {
+  min-height: 120px;
   resize: vertical;
-  min-height: 150px;
 }
 
-.submitButton {
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--linear-color);
+.textarea ~ .iconContainer {
+  top: 1.5rem;
+  transform: none;
+}
+
+.button {
+  margin-top: 0.5rem;
+  padding: 0.875rem;
+  background: var(--tertiary-color);
   color: var(--background-color);
   border: none;
   border-radius: var(--border-radius-md);
@@ -123,32 +112,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  box-shadow: var(--shadow-sm);
+  gap: 0.625rem;
 }
 
-.submitButton:hover {
-  box-shadow: var(--shadow-md);
+.button:hover:not(:disabled) {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background-color: var(--tertiary-light-color);
 }
 
-.submitButton:disabled {
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-  transform: none;
 }
 
-.buttonIcon {
-  font-size: 1.2rem;
-}
-
-.buttonLoading {
+.loading {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.buttonLoading::before {
+.loading::before {
   content: '';
   width: 1rem;
   height: 1rem;
@@ -159,35 +147,39 @@
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-.successMessage, .errorMessage {
-  background-color: var(--success-color);
-  color: var(--background-color);
-  padding: 1rem;
-  border-radius: var(--border-radius-md);
+.success, .error {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
   margin-top: 1rem;
-  animation: fadeIn 0.3s ease;
+  animation: slideIn 0.3s ease;
 }
 
-.errorMessage {
+.success {
+  background-color: var(--success-color);
+  color: var(--background-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.error {
   background-color: var(--error-color);
+  color: var(--background-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.successIcon {
-  font-size: 1.2rem;
+.success svg, .error svg {
+  min-width: 20px;
 }
 
-@keyframes fadeIn {
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
@@ -195,49 +187,12 @@
   }
 }
 
-.contactInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.infoCard {
-  display: flex;
-  gap: 1rem;
-  padding: 1.5rem;
-  background-color: var(--light-gray);
-  border-radius: var(--border-radius-md);
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
-}
-
-.infoCard:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  background-color: var(--secondary-light-color);
-}
-
-.infoIcon {
-  width: 2.5rem;
-  height: 2.5rem;
-  min-width: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--linear-color);
-  color: var(--background-color);
-  border-radius: var(--border-radius-md);
-  font-size: 1.2rem;
-}
-
-.infoContent h3 {
-  color: var(--primary-color);
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-}
-
-.infoContent p {
-  color: var(--primary-light-color);
-  margin: 0;
-  font-size: 0.9rem;
+@media (max-width: 640px) {
+  .wrapper {
+    padding: 1.5rem;
+  }
+  
+  .heading {
+    font-size: 1.75rem;
+  }
 }

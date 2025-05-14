@@ -1,7 +1,7 @@
 export default function manifest() {
   return {
-    name: 'Joliecreation',
-    short_name: 'Joliecreation',
+    name: 'joeliescreation',
+    short_name: 'joeliescreation',
     description: 'Manage your budgets well',
     start_url: '/',
     scope: '/',
@@ -51,8 +51,8 @@ export default function manifest() {
     related_applications: [],
     shortcuts: [
       {
-        name: 'Joliecreation',
-        short_name: 'Joliecreation',
+        name: 'joeliescreation',
+        short_name: 'joeliescreation',
         description: '',
         url: '/',
         icons: [{ src: '/assets/logo.png', sizes: '96x96' }]

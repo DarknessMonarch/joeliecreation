@@ -14,6 +14,7 @@
     const { services, loading, error, fetchServices } = useServiceStore();
     
     useEffect(() => {
+
       const loadServices = async () => {
         try {
           const result = await fetchServices();

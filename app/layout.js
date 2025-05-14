@@ -10,7 +10,7 @@ const urbanist = Urbanist({
 });
 
 
-const SITE_URL = "https://joeliecreation.swiftsyn.com";
+const SITE_URL = "https://joeliescreation.swiftsyn.com";
 const BANNER_URL = "https://raw.githubusercontent.com/DarknessMonarch/joeliecreation/refs/heads/master/public/assets/banner.png";
 
 export const viewport = { 
@@ -20,36 +20,36 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "joeliecreation",
-    template: "%s , joeliecreation"
+    default: "joeliescreation",
+    template: "%s , joeliescreation"
   },
-  applicationName: "joeliecreation",
+  applicationName: "joeliescreation",
   description: "get the service you need",
-  authors: [{ name: "joeliecreation", url: SITE_URL }],
+  authors: [{ name: "joeliescreation", url: SITE_URL }],
   generator: "Next.js",
   keywords: [
-    'saloon', 'services', 'cooking', 'nails', 'haircut', 'barber', 'joeliecreation',
+    'saloon', 'services', 'cooking', 'nails', 'haircut', 'barber', 'joeliescreation',
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "joeliecreation",
+    title: "joeliescreation",
     description: "get the service you need",
     url: SITE_URL,
-    siteName: "joeliecreation",
+    siteName: "joeliescreation",
     images: [{
       url: BANNER_URL,
       width: 1200,
       height: 630,
-      alt: "joeliecreation Banner"
+      alt: "joeliescreation Banner"
     }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "joeliecreation",
+    title: "joeliescreation",
     description: "get the service you need",
     images: [BANNER_URL],
-    creator: "@joeliecreation"
+    creator: "@joeliescreation"
   },
   robots: {
     index: true,
