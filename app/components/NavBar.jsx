@@ -33,7 +33,7 @@ const navLinksData = [
 
 export default function NavBar() {
   const router = useRouter();
-  const { isOpen, toggleDrawer } = useDrawerStore();
+  const { isOpen, toggleDrawer, closeDrawer } = useDrawerStore();
   const [isMobile, setIsMobile] = useState(false);
   const [isscheduleOpen, setIsscheduleOpen] = useState(false);
   const pathname = usePathname();
@@ -80,27 +80,43 @@ export default function NavBar() {
     }
   }, [isOpen, isscheduleOpen]);
 
+  // Close drawer when route changes (especially important for mobile)
+  useEffect(() => {
+    if (isOpen) {
+      closeDrawer();
+    }
+  }, [pathname, closeDrawer, isOpen]);
+
   const toggleschedule = useCallback(() => {
     setIsscheduleOpen((prev) => !prev);
-    if (isOpen) toggleDrawer();
-  }, [isOpen, toggleDrawer]);
+    if (isOpen) closeDrawer();
+  }, [isOpen, closeDrawer]);
+
+  const handleNavLinkClick = useCallback(() => {
+    if (isMobile) {
+      closeDrawer();
+    }
+  }, [isMobile, closeDrawer]);
 
   const MakeAppointment = () => {
     toggleschedule();
     router.push("/page/home");
     toast.success("Choose a service from the homepage to make an appointment");
   };
+
   return (
     <>
       <div className={styles.navLink}>
-        <div className={styles.logoContainer} onClick={() => router.push("/page/home")}>
+        <div className={styles.logoContainer} onClick={() => {
+          router.push("/page/home");
+          if (isOpen) closeDrawer();
+        }}>
           <Image
             className={styles.logoImg}
             src={Logo}
             alt="logo"
             height={50}
             priority
-            
           />
         </div>
 
@@ -174,7 +190,7 @@ export default function NavBar() {
                     ? styles.activeNavLink
                     : ""
                 }`}
-                onClick={toggleDrawer}
+                onClick={handleNavLinkClick}
                 ref={(el) => {
                   if (el) navItemsRef.current[index] = el;
                 }}
