@@ -4,7 +4,6 @@ import styles from "@/app/styles/pageLayout.module.css";
 import { useDrawerStore } from "@/app/store/Drawer";
 import Navbar from "@/app/components/NavBar";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
 
 export default function PageLayout({ children }) {
   const { isOpen, toggleDrawer } = useDrawerStore();

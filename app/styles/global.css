@@ -17,12 +17,12 @@
     --warning-color: #ff9800;
     --error-color: #e74c3c;
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --shadow-line:  rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    --shadow-lg: rgba(149, 157, 165, 0.2) 0px 8px 24px;;
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
-    --border-radius-lg: 16px;
-    --border-radius-xl: 24px;
+    --border-radius-lg: 15px;
+    --border-radius-xl: 30px;
     --transition: all 0.3s ease;
     --linear-color: linear-gradient(
       135deg,

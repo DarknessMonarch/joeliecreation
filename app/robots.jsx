@@ -7,7 +7,7 @@ export default function robots() {
           '/',
           '/about',
           '/contact',
-          '/home',
+          '/saloon',
           '/portfolio',
           '/sitemap.xml', 
         ],
@@ -16,17 +16,16 @@ export default function robots() {
           '/not-found',
           '/*.json$', 
           '/private/',
-          '/[id]/', // Disallow dynamic ID routes
         ],
         crawlDelay: 2
       },
       {
         userAgent: 'GPTBot',
-        disallow: ['/'] // This disallows GPTBot from crawling your site
+        disallow: ['/'] 
       },
       {
         userAgent: 'CCBot',
-        disallow: ['/'] // This disallows CCBot from crawling your site
+        disallow: ['/']
       }
     ],
     sitemap: 'https://joeliescreation.swiftsyn.com/sitemap.xml',

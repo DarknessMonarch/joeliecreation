@@ -49,12 +49,11 @@ export default function SingleService({ params }) {
         
         if (!result.success) {
           toast.error(result.message || "Failed to fetch service");
-          router.push("/page/home");
+          router.push("/page/saloon");
         }
       } catch (error) {
         toast.error("Failed to fetch service data");
-        console.error("Error fetching service:", error);
-        router.push("/page/home");
+        router.push("/page/saloon");
       }
     };
 
@@ -65,25 +64,17 @@ export default function SingleService({ params }) {
     if (selectedDate && currentService) {
       const fetchAvailability = async () => {
         try {
-          console.log(`Requesting availability for service ${currentService._id} on ${selectedDate.toISOString()}`);
-          
           const result = await checkAvailability(
             currentService._id, 
             selectedDate
           );
-          
-          console.log("Availability result:", result);
-          
           if (result.success && result.data.available) {
-            console.log("Available time slots:", result.data.availableTimeSlots);
             setAvailableTimeSlots(result.data.availableTimeSlots);
           } else {
-            console.log("No available slots or availability check failed");
             setAvailableTimeSlots([]);
             toast.info("No available time slots for the selected date");
           }
         } catch (error) {
-          console.error("Error checking availability:", error);
           toast.error("Could not check availability");
         }
       };
@@ -163,7 +154,6 @@ export default function SingleService({ params }) {
       setBookingId(bookingResult.data._id); 
       setCurrentStep(3); 
     } catch (error) {
-      console.error("Error creating booking:", error);
       toast.error(error.message || "Failed to create booking");
     } finally {
       setIsSubmitting(false);
@@ -206,7 +196,6 @@ export default function SingleService({ params }) {
         throw new Error(result.message || "Failed to initiate payment");
       }
     } catch (error) {
-      console.error("Payment initiation error:", error);
       toast.error(error.message || "Failed to initiate payment");
       setRedirectingToPayment(false);
     }
@@ -326,7 +315,7 @@ export default function SingleService({ params }) {
           <p>{serviceError}</p>
           <button 
             className={styles.solidButton} 
-            onClick={() => router.push("/page/home")}
+            onClick={() => router.push("/page/saloon")}
           >
             Return to Homepage
           </button>
@@ -710,7 +699,7 @@ export default function SingleService({ params }) {
                 </button>
                 <button
                   className={styles.solidButton}
-                  onClick={() => router.push("/page/home")}
+                  onClick={() => router.push("/page/saloon")}
                 >
                   Return to Homepage
                 </button>

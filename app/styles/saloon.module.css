@@ -5,9 +5,9 @@
     display: flex;
     position: relative;
     flex-direction: column;
-
+    overflow: hidden;
+    overflow-y: auto;
   }
-
 
   .serviceContent {
     width: 100%;
@@ -20,11 +20,10 @@
   .serviceTextSide {
     flex: 1;
     gap: 20px;
-    padding:10px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
   }
 
   .serviceButton {
@@ -106,7 +105,7 @@
     width: fit-content;
     border-radius: 10px;
     padding: 5px 10px;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   .serviceTextContent {
@@ -121,10 +120,9 @@
     font-weight: 300;
     color: var(--background-color);
     line-height: 1.2;
-
   }
 
-  .serviceDetails{
+  .serviceDetails {
     gap: 20px;
     display: flex;
     flex-direction: column;
@@ -149,8 +147,9 @@
   .diagonalPattern {
     position: relative;
     z-index: 99;
+    min-height: 10%;
     height: 10%;
-    
+
     background-image: repeating-linear-gradient(
       -45deg,
       rgba(255, 255, 255, 0.1) 0,
@@ -163,12 +162,15 @@
 
   .serviceImageSide {
     flex: 1;
+    min-height: 600px;
     background-size: cover;
     background-position: center;
     position: relative;
-   
   }
-  
+
+  .serviceImage {
+    object-fit: contain;
+  }
 
   .navigationArrows {
     position: absolute;
@@ -191,7 +193,6 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
   }
 
   .navArrow:hover {
@@ -262,8 +263,6 @@
     font-size: 2rem;
   }
 
- 
-
   .serviceTextContent {
     gap: 40px;
   }
@@ -272,11 +271,10 @@
     gap: 20px;
   }
 
-  .serviceDetails{
+  .serviceDetails {
     position: relative;
     left: 200px;
     z-index: 1;
-
   }
 
   .serviceDetails h1 {
@@ -297,8 +295,12 @@
   }
 
   .serviceImageSide {
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 15%);
+    height: 100%;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 1) 15%
+    );
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 15%);
   }
-
 }

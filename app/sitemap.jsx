@@ -16,7 +16,13 @@ export default async function sitemap() {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}home`,
+      url: `${baseUrl}saloon`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+      {
+      url: `${baseUrl}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,

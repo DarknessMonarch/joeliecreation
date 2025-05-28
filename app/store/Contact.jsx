@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 const SERVER_API = process.env.NEXT_PUBLIC_SERVER_API;
 
@@ -64,7 +64,7 @@ export const useContactStore = create(
     }),
     {
       name: "contact-store",
-      getStorage: () => localStorage,
+     storage: createJSONStorage(() => localStorage),
     }
   )
 );

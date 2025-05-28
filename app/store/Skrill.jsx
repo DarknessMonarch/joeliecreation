@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
+
 
 const SERVER_API = process.env.NEXT_PUBLIC_SERVER_API;
 
@@ -176,7 +177,8 @@ export const useSkrillStore = create(
     }),
     {
       name: "skrill-payment-store",
-      getStorage: () => localStorage,
+     storage: createJSONStorage(() => localStorage),
+
     }
   )
 );
