@@ -2,7 +2,7 @@ export default function manifest() {
   return {
     name: 'joeliescreation',
     short_name: 'joeliescreation',
-    description: 'Manage your budgets well',
+    description: 'Get all the service you need in one place.',
     start_url: '/',
     scope: '/',
     display: 'standalone',
